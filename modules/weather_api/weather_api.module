@@ -14,7 +14,7 @@
 function weather_api_theme($existing, $type, $theme, $path) {
   return [
     'weather_api' => [
-      'variables' => ['items' => [], 'title' => '', 'nombre' => '' ]
+      'variables' => ['items' => [], 'title' => '', 'nombre' => '', 'listaciudades' => '' ]
     ]
   ];
 }

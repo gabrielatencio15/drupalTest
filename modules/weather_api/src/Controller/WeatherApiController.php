@@ -4,37 +4,26 @@ namespace Drupal\weather_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
+require_once(drupal_get_path('module', 'weather_api') . '/src/API/ApiResources.php');
+require_once(drupal_get_path('module', 'weather_api') . '/src/DB/DBResources.php');
+
+
 class WeatherApiController extends ControllerBase {
 
   public function Page(){
 
-    $database = \Drupal::database();
-    $query = $database->query("SELECT * FROM tbparametros");
-    $result = $query->fetchAll();
+    //use GuzzleHttp\Exception\RequestException;
 
-    $endpoint = $result[0]->value;
+    $consulta_ciudades = query_db('SELECT codPais, nombrePais, codCiudad, nombreCiudad FROM CiuPaiDisponibles ORDER BY nombrePais ASC, nombreCiudad ASC');
+    // $lista_paises = '';
 
-
-
-    // $get_data = callAPI('GET', 'https://api.openweathermap.org/data/2.5/weather?q=Maracaibo,ve&appid=2dfbc79d79b64cba3c4969f09ab3ef96', false);
-    //   $response = json_decode($get_data, true);
-    //   $errors = $response['response']['errors'];
-    //   $data = $response['response']['data'][0];
-
-    //   print_r();
-
-    $items = [
-      // ['title' => 'Noticia 1'],
-      // ['title' => 'Noticia 2'],
-      // ['title' => 'Noticia 3'],
-      // ['title' => 'Noticia 4'],
-    ];
 
     return [
       '#theme' => 'weather_api',
       '#items' => $items,
-      '#title' => 'TOOPOOOO',
-      '#nombre' => $endpoint
+      '#title' => '',
+      '#nombre' => 'Consulta el clima de tu ciudad',//$endpoint
+      '#listaciudades' => $consulta_ciudades
     ];
 
   }
