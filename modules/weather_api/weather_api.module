@@ -5,12 +5,13 @@
       'weather_api' => [
         'variables' => ['items' => [], 
                         'title' => '', 
-                        'nombre' => '', 
+                        'title_component' => '', 
                         'listaciudades' => '',
                         'apiendpoint' => '',
                         'apitoken' => '',
                         'hayciudades' => '',
-                        'isapicomplete' => '' ]
+                        'isapicomplete' => '',
+                        'weather_unit' => '' ]
       ]
     ];
   }

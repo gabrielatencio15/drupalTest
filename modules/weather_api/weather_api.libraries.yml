@@ -1,11 +1,11 @@
 global-styling:
   css:
     theme:
-      css/estilo.css: {}
+      css/bootstrap5.css: {}
 
 global-scripts:
   js:
-    js/javascript-file.js: {}
+    js/scripts.js: {}
   dependencies:
     - core/jquery
     - core/drupal
