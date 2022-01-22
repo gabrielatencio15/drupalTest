@@ -2,3 +2,10 @@ global-styling:
   css:
     theme:
       css/estilo.css: {}
+
+global-scripts:
+  js:
+    js/javascript-file.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

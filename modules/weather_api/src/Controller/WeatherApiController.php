@@ -4,26 +4,30 @@ namespace Drupal\weather_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
-require_once(drupal_get_path('module', 'weather_api') . '/src/API/ApiResources.php');
 require_once(drupal_get_path('module', 'weather_api') . '/src/DB/DBResources.php');
-
+//require_once(drupal_get_path('module', 'weather_api') . '/src/API/ApiResources.php');
 
 class WeatherApiController extends ControllerBase {
 
   public function Page(){
 
-    //use GuzzleHttp\Exception\RequestException;
+    $consulta_ciudades = query_db("SELECT codPais, nombrePais, codCiudad, nombreCiudad FROM CiuPaiDisponibles ORDER BY nombrePais ASC, nombreCiudad ASC");
+    $consulta_api_endpoint = query_db("SELECT `value` FROM tbParametros WHERE `param` = 'endpoint'");
+    $consulta_api_token = query_db("SELECT `value` FROM tbParametros WHERE `param` = 'API_ID'");
 
-    $consulta_ciudades = query_db('SELECT codPais, nombrePais, codCiudad, nombreCiudad FROM CiuPaiDisponibles ORDER BY nombrePais ASC, nombreCiudad ASC');
-    // $lista_paises = '';
-
-
+    $hayciudades = (!$consulta_ciudades) ? 0 : 1;
+    $isapicomplete = (!$consulta_api_endpoint || !$consulta_api_token) ? 0 : 1;
+    
     return [
       '#theme' => 'weather_api',
       '#items' => $items,
       '#title' => '',
       '#nombre' => 'Consulta el clima de tu ciudad',//$endpoint
-      '#listaciudades' => $consulta_ciudades
+      '#listaciudades' => $consulta_ciudades,
+      '#apiendpoint' => base64_encode($consulta_api_endpoint[0]->value),
+      '#apitoken' => base64_encode($consulta_api_token[0]->value),
+      '#hayciudades' => $hayciudades,
+      '#isapicomplete' => $isapicomplete
     ];
 
   }

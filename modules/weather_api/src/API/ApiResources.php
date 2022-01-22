@@ -1,18 +1,21 @@
 <?php
 
-$client = \Drupal::httpClient();
-$people = [];
+  $client = \Drupal::httpClient();
 
-try {
-  $response = $client->get('https://api.openweathermap.org/data/2.5/weather?q=Maracaibo,ve&appid=2dfbc79d79b64cba3c4969f09ab3ef96');
-  $result = json_decode($response->getBody(), TRUE);
-  //print_r($result);
-//   foreach($result as $item) {
-//     $people[] = $item; 
-//   }
-    
-  //print_r($result['cod']);
-}
-catch (RequestException $e) {
-  // log exception
-}
+  function isApiAvailable($url)
+  {
+    try 
+    {
+      $response = $client->get($url);
+      $result = json_decode($response->getBody(), TRUE);
+  
+      return $result;
+        
+    }
+    catch (RequestException $e) 
+    {
+      return $e;
+    }
+  }
+
+?>
