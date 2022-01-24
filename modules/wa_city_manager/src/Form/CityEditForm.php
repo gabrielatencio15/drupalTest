@@ -145,7 +145,7 @@ class CityEditForm extends FormBase
       $fields["idPais"] = $field['idPais'];
       $fields["activo"] = $field['activo'];
 	
-      $conn->update('ciudadespinches')
+      $conn->update('tblistaciudades')
            ->fields($fields)->condition('idCiudad', $field['idCiudad'])->execute();
 
       $response->addCommand(new OpenModalDialogCommand("Alerta", '¡Los datos han sido actualizados!', ['width' => 800]));

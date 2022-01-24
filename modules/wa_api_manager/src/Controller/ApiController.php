@@ -73,7 +73,7 @@ class ApiController extends ControllerBase
    */
   public function deleteApiAjax($cid) 
   {
-    $res = \Drupal::database()->query("DELETE FROM parametrospinches where id_param = :id_param", array(':id_param' => $cid)); 
+    $res = \Drupal::database()->query("DELETE FROM tbParametros where id_param = :id_param", array(':id_param' => $cid)); 
 	  $render_array = $this->formBuilder->getForm('Drupal\wa_api_manager\Form\ApiTableForm','All');
 	  $response = new AjaxResponse();
 	  $response->addCommand(new HtmlCommand('.result_message','' ));
@@ -91,7 +91,7 @@ class ApiController extends ControllerBase
   public function editApiAjax($cid) 
   {
 	  $conn = Database::getConnection();
-    $query = $conn->select('parametrospinches', 'pa');
+    $query = $conn->select('tbParametros', 'pa');
     $query->condition('id_param', $cid)->fields('pa');
     $record = $query->execute()->fetchAssoc();
     

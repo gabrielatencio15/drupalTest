@@ -6,7 +6,7 @@ use Drupal\Core\Database\Database;
  */
 function wa_country_manager_schema(){
 
-    $schema['paisespinches'] = array(
+    $schema['tblistapaises'] = array(
         'description' => 'Tabla para almacenar los Paises.',
         'fields' => array(
             'idPais' => array(

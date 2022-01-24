@@ -133,7 +133,7 @@ class CountryEditForm extends FormBase
       $fields["codPais"] = $field['codPais'];
       $fields["activo"] = $field['activo'];
 	
-      $conn->update('paisespinches')
+      $conn->update('tblistapaises')
            ->fields($fields)->condition('idPais', $field['idPais'])->execute();
 
       $response->addCommand(new OpenModalDialogCommand("Alerta", '¡Los datos han sido actualizados!', ['width' => 800]));

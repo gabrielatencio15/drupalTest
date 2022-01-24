@@ -13,7 +13,7 @@ use Drupal\Core\Link;
   function getPagerCity()
   {
 	
-    $query = \Drupal::database()->select('ciudadespinches', 't');
+    $query = \Drupal::database()->select('tblistaciudades', 't');
     $query->addExpression('COUNT(*)');
     $count = $query->execute()->fetchField();
  

@@ -73,7 +73,7 @@ class CityController extends ControllerBase
    */
   public function deleteCityAjax($cid) 
   {
-    $res = \Drupal::database()->query("DELETE FROM ciudadespinches where idCiudad = :idCiudad", array(':idCiudad' => $cid)); 
+    $res = \Drupal::database()->query("DELETE FROM tblistaciudades where idCiudad = :idCiudad", array(':idCiudad' => $cid)); 
 	  $render_array = $this->formBuilder->getForm('Drupal\wa_city_manager\Form\CityTableForm','All');
 	  $response = new AjaxResponse();
 	  $response->addCommand(new HtmlCommand('.result_message','' ));
@@ -91,7 +91,7 @@ class CityController extends ControllerBase
   public function editCityAjax($cid) 
   {
 	  $conn = Database::getConnection();
-    $query = $conn->select('ciudadespinches', 'ci');
+    $query = $conn->select('tblistaciudades', 'ci');
     $query->condition('idCiudad', $cid)->fields('ci');
     $record = $query->execute()->fetchAssoc();
     

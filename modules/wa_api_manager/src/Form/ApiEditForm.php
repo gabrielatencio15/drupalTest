@@ -121,7 +121,7 @@ class ApiEditForm extends FormBase
       $fields["param"] = $field['param'];
       $fields["value"] = $field['value'];
 	
-      $conn->update('parametrospinches')
+      $conn->update('tbParametros')
            ->fields($fields)->condition('id_param', $field['id_param'])->execute();
 
       $response->addCommand(new OpenModalDialogCommand("Alerta", '¡Los datos han sido actualizados!', ['width' => 800]));

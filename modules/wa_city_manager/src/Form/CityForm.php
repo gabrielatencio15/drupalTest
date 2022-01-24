@@ -165,7 +165,7 @@ class CityForm extends FormBase
     }
     else
     {
-      $conn->insert('ciudadespinches')
+      $conn->insert('tblistaciudades')
           ->fields($fields)->execute();
       
       $dialogText['#attached']['library'][] = 'core/drupal.dialog.ajax';

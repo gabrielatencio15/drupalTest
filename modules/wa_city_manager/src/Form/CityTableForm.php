@@ -86,7 +86,7 @@ class CityTableForm extends FormBase
     if($opt == "All")
     {
 
-      $results = \Drupal::database()->select('ciudadespinches', 'ci');
+      $results = \Drupal::database()->select('tblistaciudades', 'ci');
     
       $results->fields('ci');
       $results->range(0, 15);
@@ -96,7 +96,7 @@ class CityTableForm extends FormBase
     }
     else
     {
-      $query = \Drupal::database()->select('ciudadespinches', 'ci');
+      $query = \Drupal::database()->select('tblistaciudades', 'ci');
       
       $query->fields('ci');
       $query->range($opt*15, 15);

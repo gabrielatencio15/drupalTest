@@ -85,7 +85,7 @@ class CountryTableForm extends FormBase
     if($opt == "All")
     {
 
-      $results = \Drupal::database()->select('paisespinches', 'co');
+      $results = \Drupal::database()->select('tblistapaises', 'co');
     
       $results->fields('co');
       $results->range(0, 15);
@@ -95,7 +95,7 @@ class CountryTableForm extends FormBase
     }
     else
     {
-      $query = \Drupal::database()->select('paisespinches', 'co');
+      $query = \Drupal::database()->select('tblistapaises', 'co');
       
       $query->fields('co');
       $query->range($opt*15, 15);

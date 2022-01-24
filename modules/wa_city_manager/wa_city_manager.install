@@ -6,7 +6,7 @@ use Drupal\Core\Database\Database;
  */
 function wa_city_manager_schema(){
 
-    $schema['ciudadespinches'] = array(
+    $schema['tblistaciudades'] = array(
         'description' => 'Tabla para almacenar las Ciudades.',
         'fields' => array(
             'idCiudad' => array(

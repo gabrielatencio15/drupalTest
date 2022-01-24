@@ -1,6 +1,0 @@
-weather_api.weather:
-  path: '/modules/custom/weather_api'
-  defaults:
-    _controller: '\Drupal\weather_api\Controller\WeatherApiController::page'
-  requirements:
-    _permission: 'access content'

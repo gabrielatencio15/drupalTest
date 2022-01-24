@@ -139,7 +139,7 @@ class ApiForm extends FormBase
     }
     else
     {
-      $conn->insert('parametrospinches')
+      $conn->insert('tbParametros')
           ->fields($fields)->execute();
       
       $dialogText['#attached']['library'][] = 'core/drupal.dialog.ajax';

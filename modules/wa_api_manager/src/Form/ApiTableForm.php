@@ -84,7 +84,7 @@ class ApiTableForm extends FormBase
     if($opt == "All")
     {
 
-      $results = \Drupal::database()->select('parametrospinches', 'par');
+      $results = \Drupal::database()->select('tbParametros', 'par');
     
       $results->fields('par');
       $results->range(0, 15);

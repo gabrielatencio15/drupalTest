@@ -138,7 +138,7 @@ class CountryForm extends FormBase
     }
     else
     {
-      $conn->insert('paisespinches')
+      $conn->insert('tblistapaises')
           ->fields($fields)->execute();
       
       $dialogText['#attached']['library'][] = 'core/drupal.dialog.ajax';

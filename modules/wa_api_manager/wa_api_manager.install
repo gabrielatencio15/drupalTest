@@ -6,7 +6,7 @@ use Drupal\Core\Database\Database;
  */
 function wa_api_manager_schema(){
 
-    $schema['parametrospinches'] = array(
+    $schema['tbParametros'] = array(
         'description' => 'Tabla para almacenar los Parámetros necesarios para el Weather API.',
         'fields' => array(
             'id_param' => array(

@@ -73,7 +73,7 @@ class CountryController extends ControllerBase
    */
   public function deleteCountryAjax($cid) 
   {
-    $res = \Drupal::database()->query("DELETE FROM paisespinches where idPais = :idPais", array(':idPais' => $cid)); 
+    $res = \Drupal::database()->query("DELETE FROM tblistapaises where idPais = :idPais", array(':idPais' => $cid)); 
 	  $render_array = $this->formBuilder->getForm('Drupal\wa_country_manager\Form\CountryTableForm','All');
 	  $response = new AjaxResponse();
 	  $response->addCommand(new HtmlCommand('.result_message','' ));
@@ -91,7 +91,7 @@ class CountryController extends ControllerBase
   public function editCountryAjax($cid) 
   {
 	  $conn = Database::getConnection();
-    $query = $conn->select('paisespinches', 'st');
+    $query = $conn->select('tblistapaises', 'st');
     $query->condition('idPais', $cid)->fields('st');
     $record = $query->execute()->fetchAssoc();
     
