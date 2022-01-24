@@ -1,0 +1,67 @@
+<?php
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+/**
+ * @file
+ * Contains CountryManager.module.
+ */
+ 
+/**
+   * {@inheritdoc}
+   * Get Pager
+   */
+  function getPager()
+  {
+	
+    $query = \Drupal::database()->select('tblistapaises', 't');
+    $query->addExpression('COUNT(*)');
+    $count = $query->execute()->fetchField();
+ 
+  
+    $count = ceil($count/15);
+
+    $page_link = Url::fromUserInput('/ajax/wa_country_manager/table/page/0');
+    $page_link = Link::fromTextAndUrl('<<', $page_link);
+    $page_link = $page_link->toRenderable();
+    $page_link['#attributes'] = ['class'=>['use-ajax']];
+    
+    $out = render($page_link);
+
+    for($i = 0; $i < $count; $i++)
+    {
+      $page = Url::fromUserInput('/ajax/wa_country_manager/table/page/'.$i);
+      $pageLink =  Link::fromTextAndUrl($i, $page); 
+      $pageLink = $pageLink->toRenderable();
+      $pageLink['#attributes'] = ['class'=>['use-ajax','pagination-link']];
+      $out = $out.render($pageLink); 
+    }
+
+    $last_page = $count-1;
+    $page_link_last = Url::fromUserInput('/ajax/wa_country_manager/table/page/'.$last_page);
+    $page_link_last = Link::fromTextAndUrl('>>', $page_link_last);
+    $page_link_last = $page_link_last->toRenderable();
+    $page_link_last['#attributes'] = ['class'=>['use-ajax']];
+    $out = $out.render($page_link_last);
+    
+    return $out;
+	
+  }
+
+  function get_country_form() 
+  {
+    $render_array = \Drupal::formBuilder()->getForm('Drupal\wa_country_manager\Form\CountryForm');
+    
+    return $render_array;
+  }
+
+  function dn_countries_element_info_alter(array &$types) 
+  {
+    if (isset($types['table'])) 
+    {
+      $types['table']['#attached']['library'][] = 'wa_country_manager/wa_country_manager';
+    }
+  }
+
+
+
+

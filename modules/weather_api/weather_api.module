@@ -1,0 +1,20 @@
+<?php
+
+  function weather_api_theme($existing, $type, $theme, $path) {
+    return [
+      'weather_api' => [
+        'variables' => ['items' => [], 
+                        'title' => '', 
+                        'title_component' => '', 
+                        'listaciudades' => '',
+                        'apiendpoint' => '',
+                        'apitoken' => '',
+                        'hayciudades' => '',
+                        'isapicomplete' => '',
+                        'weather_unit' => '' ]
+      ]
+    ];
+  }
+
+
+

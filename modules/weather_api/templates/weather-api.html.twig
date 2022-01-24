@@ -1,0 +1,60 @@
+<style>
+    @import url('./modules/weather_api/css/fonts/fonts.css');
+</style>
+
+<link href="./modules/weather_api/css/bootstrap/bootstrap5.css" rel="stylesheet">
+<link href="./modules/weather_api/css/bootstrap/weather_api_styles.css" rel="stylesheet">
+<script src="./modules/weather_api/js/bootstrap5.js"></script>
+
+<section class="section_title">
+    <div class="weatherapi_title">
+        <span>{{ title_component }}</span>
+    </div>
+    <input id="weather_k" type="hidden" value="{{ apitoken }}">
+    <input id="weather_u" type="hidden" value="{{ apiendpoint }}">
+    <input id="weather_unit" type="hidden" value="{{ weather_unit }}">
+</section>
+
+<div class="city_list_section">
+    
+    <label class="wheatherapi_select_label" for="ciudad_value">Lista de Ciudades</label> 
+    <select class="form-select" id="ciudad_value">
+        <option value="">-</option>
+        {% set newArray = [] %}
+        {% for ciudad in listaciudades %}
+            {% if ciudad.nombrePais not in newArray %}
+                <optgroup label="{{ ciudad.nombrePais|e }}">
+                {% set newArray = newArray|merge([ciudad.nombrePais]) %}
+            {% endif %}
+            <option value="{{ ciudad.codPais|e }}">{{ ciudad.nombreCiudad|e }}</option>
+        {% endfor %}
+    </select>
+
+</div>
+
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 col-sm-12 col-xs-12">
+                <div class="card p-4">
+                    <div class="d-flex">
+                        <h6 class="flex-grow-1"><span id="city_name">-</span></h6>
+                        <h6><span id="time_query">-</span></h6>
+                    </div>
+                    <div class="d-flex flex-column temp mt-5 mb-3">
+                        <h1 class="mb-0 font-weight-bold" id="heading"><span id="temperature_indicator">--</span></h1> 
+                        <span class="small grey">Humedad: <span id="humidity_indicator">--</span></span>
+                        <span class="small grey">Presión: <span id="pressure_indicator">--</span></span>
+                        <div><span class="small grey">Temp Min: <span id="mintemp_indicator">--</span></span> <span class="small grey"> Max: <span id="maxtemp_indicator">--</span></span></div>
+                    </div>
+                    <div>
+                        <div class="earth_container"> <img src="./modules/weather_api/src/img/earth.gif" width="100px"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="./modules/weather_api/js/jQuery.js"></script>
+<script type="text/javascript" src="./modules/weather_api/js/scripts.js"></script>

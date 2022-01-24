@@ -1,0 +1,72 @@
+html,
+body {
+    height: 100%
+}
+
+* {
+    padding: 0px;
+    margin: 0px
+}
+
+body {
+    background-color: #a5a5b1;
+    display: grid;
+    place-items: center
+}
+
+.card {
+    background: aliceblue;
+    border-radius: 50px;
+    color: #6f707d;
+    font-family: 'Source Code Pro', monospace
+}
+
+#heading {
+    font-size: 55px;
+    color: #2b304d
+}
+
+.temp {
+    place-items: center
+}
+
+.temp-details>p>span,
+.grey {
+    color: #a3acc1;
+    font-size: 12px
+}
+
+.fa {
+    color: #a5a5b1
+}
+
+*:focus {
+    outline: none
+}
+
+.dialog-off-canvas-main-canvas {
+    width: 100% !important;
+}
+
+.weatherapi_title {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.earth_container {
+    width: 100%;
+    text-align: center;
+}
+
+.section_title {
+    padding-bottom: 20px;
+}
+
+.city_list_section {
+    padding-bottom: 40px;
+}
+
+.wheatherapi_select_label {
+    font-family: 'Source Code Pro', monospace;
+}

@@ -1,0 +1,8 @@
+name: Weather API (City Manager Module)
+type: module
+description: Módulo para crear/editar/eliminar las ciudades del Weather API Module.
+package: weather
+version: 1.0
+core: 8.x
+
+core_version_requirement: ^8 || ^9

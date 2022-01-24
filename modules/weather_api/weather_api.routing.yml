@@ -1,0 +1,6 @@
+weather_api.weather:
+  path: '/weather-api'
+  defaults:
+    _controller: '\Drupal\weather_api\Controller\WeatherApiController::Page'
+  requirements:
+    _permission: 'access content'

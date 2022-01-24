@@ -1,0 +1,67 @@
+<?php
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+/**
+ * @file
+ * Contains ApiManager.module.
+ */
+ 
+/**
+   * {@inheritdoc}
+   * Get Pager
+   */
+  function getPagerApi()
+  {
+	
+    $query = \Drupal::database()->select('tbParametros', 't');
+    $query->addExpression('COUNT(*)');
+    $count = $query->execute()->fetchField();
+ 
+  
+    $count = ceil($count/15);
+
+    $page_link = Url::fromUserInput('/ajax/wa_api_manager/table/page/0');
+    $page_link = Link::fromTextAndUrl('<<', $page_link);
+    $page_link = $page_link->toRenderable();
+    $page_link['#attributes'] = ['class'=>['use-ajax']];
+    
+    $out = render($page_link);
+
+    for($i = 0; $i < $count; $i++)
+    {
+      $page = Url::fromUserInput('/ajax/wa_api_manager/table/page/'.$i);
+      $pageLink =  Link::fromTextAndUrl($i, $page); 
+      $pageLink = $pageLink->toRenderable();
+      $pageLink['#attributes'] = ['class'=>['use-ajax','pagination-link']];
+      $out = $out.render($pageLink); 
+    }
+
+    $last_page = $count-1;
+    $page_link_last = Url::fromUserInput('/ajax/wa_api_manager/table/page/'.$last_page);
+    $page_link_last = Link::fromTextAndUrl('>>', $page_link_last);
+    $page_link_last = $page_link_last->toRenderable();
+    $page_link_last['#attributes'] = ['class'=>['use-ajax']];
+    $out = $out.render($page_link_last);
+    
+    return $out;
+	
+  }
+
+  function get_api_form() 
+  {
+    $render_array = \Drupal::formBuilder()->getForm('Drupal\wa_api_manager\Form\ApiForm');
+    
+    return $render_array;
+  }
+
+  function dn_apis_element_info_alter(array &$types) 
+  {
+    if (isset($types['table'])) 
+    {
+      $types['table']['#attached']['library'][] = 'wa_api_manager/wa_api_manager';
+    }
+  }
+
+
+
+

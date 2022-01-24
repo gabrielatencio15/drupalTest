@@ -1,0 +1,31 @@
+wa_api_manager.apimanage:
+  path: '/manageApis'
+  defaults:
+    _title: 'API'
+    _controller: '\Drupal\wa_api_manager\Controller\ApiController::manageApis'
+  requirements:
+    _permission: 'administer apis'
+    
+wa_api_manager.delete_api_ajax:
+  path: '/del/wa_api_manager/apis/delete/{cid}'
+  defaults:
+    _controller: '\Drupal\wa_api_manager\Controller\ApiController::deleteApiAjax'
+    _title: 'Eliminar API'
+  requirements:
+    _permission: 'administer apis'
+
+wa_api_manager.edit_api_ajax:
+  path: '/ajax/wa_api_manager/apis/edit/{cid}'
+  defaults:
+    _controller: '\Drupal\wa_api_manager\Controller\ApiController::editApiAjax'
+    _title: 'Editar API'
+  requirements:
+    _permission: 'administer apis'
+    
+wa_api_manager.pagination_api_ajax:
+  path: '/ajax/wa_api_manager/table/page/{no}'
+  defaults:
+    _controller: '\Drupal\wa_api_manager\Controller\ApiController::tablePaginationAjax'
+    _title: 'Paginación: APIs'
+  requirements:
+    _permission: 'administer apis'

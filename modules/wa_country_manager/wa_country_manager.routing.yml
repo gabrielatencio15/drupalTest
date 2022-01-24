@@ -1,0 +1,31 @@
+wa_country_manager.countrymanage:
+  path: '/manageCountries'
+  defaults:
+    _title: 'Países'
+    _controller: '\Drupal\wa_country_manager\Controller\CountryController::manageCountries'
+  requirements:
+    _permission: 'administer countries'
+    
+wa_country_manager.delete_country_ajax:
+  path: '/del/wa_country_manager/countries/delete/{cid}'
+  defaults:
+    _controller: '\Drupal\wa_country_manager\Controller\CountryController::deleteCountryAjax'
+    _title: 'Eliminar País'
+  requirements:
+    _permission: 'administer countries'
+
+wa_country_manager.edit_country_ajax:
+  path: '/ajax/wa_country_manager/countries/edit/{cid}'
+  defaults:
+    _controller: '\Drupal\wa_country_manager\Controller\CountryController::editCountryAjax'
+    _title: 'Editar País'
+  requirements:
+    _permission: 'administer countries'
+    
+wa_country_manager.pagination_country_ajax:
+  path: '/ajax/wa_country_manager/table/page/{no}'
+  defaults:
+    _controller: '\Drupal\wa_country_manager\Controller\CountryController::tablePaginationAjax'
+    _title: 'Paginación: Países'
+  requirements:
+    _permission: 'administer countries'
