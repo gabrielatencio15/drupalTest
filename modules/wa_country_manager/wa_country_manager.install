@@ -1,0 +1,49 @@
+<?php
+use Drupal\Core\Database\Database;
+ 
+/**
+ * Implements hook_schema().
+ */
+function wa_country_manager_schema(){
+
+    $schema['paisespinches'] = array(
+        'description' => 'Tabla para almacenar los Paises.',
+        'fields' => array(
+            'idPais' => array(
+                'description' => 'ID del País',
+                'type' => 'serial',
+                'not null' => TRUE,
+                'unsigned' => TRUE,
+            ),
+            'nombrePais' => array(
+                'description' => 'Nombre del País',
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+            ),
+           'codPais' => array(
+                'description' => 'Nombre abreviado del País.',
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE
+            ),
+            'activo' => array(
+                'description' => '	Indica si se muestra o no el País	',
+                'type' => 'int',
+                'default' => 1
+            ),
+        ),
+        'primary key' => array('idPais'),
+        'unique keys' => array(
+            'nombrePais' => array(
+              'nombrePais',
+            ),
+            'codPais' => array(
+                'codPais',
+              ),
+        )
+    );
+
+    return $schema;
+}
+

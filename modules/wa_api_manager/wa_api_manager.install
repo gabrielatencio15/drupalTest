@@ -1,0 +1,41 @@
+<?php
+use Drupal\Core\Database\Database;
+ 
+/**
+ * Implements hook_schema().
+ */
+function wa_api_manager_schema(){
+
+    $schema['parametrospinches'] = array(
+        'description' => 'Tabla para almacenar los Parámetros necesarios para el Weather API.',
+        'fields' => array(
+            'id_param' => array(
+                'description' => 'ID del Parámetro',
+                'type' => 'serial',
+                'not null' => TRUE,
+                'unsigned' => TRUE,
+            ),
+            'param' => array(
+                'description' => 'Nombre del Parámetro',
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+            ),
+           'value' => array(
+                'description' => 'Valor del Parámetro',
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE
+            ),
+        ),
+        'primary key' => array('id_param'),
+        'unique keys' => array(
+            'param' => array(
+              'param',
+            ),
+        )
+    );
+
+    return $schema;
+}
+

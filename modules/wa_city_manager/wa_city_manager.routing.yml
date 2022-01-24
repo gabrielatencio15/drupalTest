@@ -1,0 +1,31 @@
+wa_city_manager.citymanage:
+  path: '/manageCities'
+  defaults:
+    _title: 'Ciudades'
+    _controller: '\Drupal\wa_city_manager\Controller\CityController::manageCities'
+  requirements:
+    _permission: 'administer cities'
+    
+wa_city_manager.delete_city_ajax:
+  path: '/del/wa_city_manager/cities/delete/{cid}'
+  defaults:
+    _controller: '\Drupal\wa_city_manager\Controller\CityController::deleteCityAjax'
+    _title: 'Eliminar Ciudad'
+  requirements:
+    _permission: 'administer cities'
+
+wa_city_manager.edit_city_ajax:
+  path: '/ajax/wa_city_manager/cities/edit/{cid}'
+  defaults:
+    _controller: '\Drupal\wa_city_manager\Controller\CityController::editCityAjax'
+    _title: 'Editar Ciudad'
+  requirements:
+    _permission: 'administer cities'
+    
+wa_city_manager.pagination_city_ajax:
+  path: '/ajax/wa_city_manager/table/page/{no}'
+  defaults:
+    _controller: '\Drupal\wa_city_manager\Controller\CityController::tablePaginationAjax'
+    _title: 'Paginación: Ciudades'
+  requirements:
+    _permission: 'administer cities'

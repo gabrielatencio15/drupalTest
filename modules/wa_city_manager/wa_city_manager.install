@@ -1,0 +1,54 @@
+<?php
+use Drupal\Core\Database\Database;
+ 
+/**
+ * Implements hook_schema().
+ */
+function wa_city_manager_schema(){
+
+    $schema['ciudadespinches'] = array(
+        'description' => 'Tabla para almacenar las Ciudades.',
+        'fields' => array(
+            'idCiudad' => array(
+                'description' => 'ID de la Ciudad',
+                'type' => 'serial',
+                'not null' => TRUE,
+                'unsigned' => TRUE,
+            ),
+            'nombreCiudad' => array(
+                'description' => 'Nombre de la Ciudad',
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+            ),
+           'codCiudad' => array(
+                'description' => 'Nombre abreviado de la Ciudad.',
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE
+            ),
+            'idPais' => array(
+                'description' => 'ID del País al que pertenece la Ciudad.',
+                'type' => 'int',
+                'not null' => TRUE
+            ),
+            'activo' => array(
+                'description' => 'Indica si se muestra o no la ciudad	',
+                'type' => 'int',
+                'default' => 1
+            ),
+        ),
+        'primary key' => array('idCiudad'),
+        'unique keys' => array(
+            'nombreCiudad' => array(
+              'nombreCiudad',
+            ),
+            'codCiudad' => array(
+                'codCiudad',
+              ),
+        )
+    );
+
+    return $schema;
+}
+

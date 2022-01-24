@@ -5,13 +5,12 @@ namespace Drupal\weather_api\Controller;
 use Drupal\Core\Controller\ControllerBase;
 
 require_once(drupal_get_path('module', 'weather_api') . '/src/DB/DBResources.php');
-//require_once(drupal_get_path('module', 'weather_api') . '/src/API/ApiResources.php');
 
 class WeatherApiController extends ControllerBase {
 
   public function Page(){
 
-    $consulta_ciudades = query_db("SELECT codPais, nombrePais, codCiudad, nombreCiudad FROM CiuPaiDisponibles ORDER BY nombrePais ASC, nombreCiudad ASC");
+    $consulta_ciudades = query_db("SELECT codPais, nombrePais, codCiudad, nombreCiudad FROM tbListaPaises AS pai INNER JOIN tblistaciudades AS ciu ON pai.idPais = ciu.idPais AND pai.activo = 1 AND ciu.activo = 1 ORDER BY nombrePais ASC, nombreCiudad ASC");
     $consulta_api_endpoint = query_db("SELECT `value` FROM tbParametros WHERE `param` = 'endpoint'");
     $consulta_api_token = query_db("SELECT `value` FROM tbParametros WHERE `param` = 'API_ID'");
     $consulta_api_unit = query_db("SELECT `value` FROM tbParametros WHERE `param` = 'weather_unit'");
