@@ -10,10 +10,6 @@
 -Some styling fixs.
 -Security important things.
 
-## Tech
-
-dwddw
-
 ## Installation
 
 Weather API requires [Drupal 9](https://www.drupal.org/about/9) + to run.
